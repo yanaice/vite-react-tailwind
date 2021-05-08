@@ -15,10 +15,13 @@
 - defer vs async: https://medium.com/@roderickhsiao/react-app-performance-optimization-5e59454983e4
 - preload vs prefetch
 - Cache-Control
+- Code split, chunk
+
+## Test
+- cypress, jest
 
 ## Other
 - security: CSP
-- no key in localstorage
 - SEO: <meta tag
 
 ## Theme
