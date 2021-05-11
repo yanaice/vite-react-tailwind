@@ -78,7 +78,7 @@ export const InputField: React.FC<InputFieldProps> = props => {
 				</div>}
 				<Input
 					{...props}
-					{...field}
+					{..._.omit(field, 'ref')}
 				/>
 				<p className="text-sm text-red-500">{_.get(errors, name)?.message}</p>
 			</div>

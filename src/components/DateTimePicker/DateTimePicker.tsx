@@ -28,7 +28,7 @@ const theme = createMuiTheme({
   }
 });
 
-const NativeDatepicker = require('native-datepicker/src/react')
+// const NativeDatepicker = require('native-datepicker/src/react')
 
 interface Props {
   label: string | undefined

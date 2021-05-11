@@ -13,6 +13,8 @@ import axios from './client/axios'
 import { LiffProvider } from 'react-liff-v2'
 import config from './config/config';
 
+console.log("config: ", config)
+
 const swrConfig = {
   fetcher: (url: string) => axios.get(url).then((res) => res.data),
   shouldRetryOnError: false,
@@ -22,7 +24,7 @@ const stubEnabled = import.meta.env.MODE !== 'production'
 
 ReactDOM.render(
   <React.StrictMode>
-    <LiffProvider liffId={config.LIFF_ID} stubEnabled={stubEnabled}>
+    <LiffProvider liffId={`${config.LIFF_ID}`} stubEnabled={stubEnabled}>
       <SWRConfig value={swrConfig}>
         <RecoilRoot>
           <App />
