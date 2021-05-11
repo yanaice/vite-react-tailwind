@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import successIcon from '../../../assets/icons/success-icon.png'
 import logo from '../../../assets/logo/praram9-logo.svg'
 import { useLiff } from 'react-liff-v2'
@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const BasicInfo: React.FC<Props> = () => {
-  const { liff, isLoggedIn } = useLiff()
+  const { liff } = useLiff()
   
   const handleCloseWindow = () => {
     liff?.closeWindow()

@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useForm, FormProvider, useFieldArray, useFormContext } from 'react-hook-form'
+import React, { useEffect } from 'react'
+import { useForm, FormProvider, useFieldArray } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { InputField } from '../../../components/input/Input'
 import logo from '../../../assets/logo/praram9-logo.svg'
 import { MENU } from '../RegisterHospitelPage'
-import { useUserInfo, useUserSeverity } from '../../../hooks/hospitel'
-import { DatePickerField } from '../../../components/DateTimePicker/DateTimePicker'
+import {  useUserSeverity } from '../../../hooks/hospitel'
 import { RadioGroupField } from '../../../components/Radio/Radio'
-import { CheckboxField, Checkbox } from '../../../components/Checkbox/Checkbox'
+import { CheckboxField } from '../../../components/Checkbox/Checkbox'
 import AddIcon from '../../../assets/icons/add-icon.svg'
 import RemoveIcon from '../../../assets/icons/remove-icon.svg'
-import { decimalNumber, numberOnly } from '../../../utils/regex'
 import GroupField from '../../../components/GroupField/GroupField'
 import _ from 'lodash'
-import useSWR from 'swr'
 
 export interface Props {
   onNextStep: () => void
@@ -334,12 +331,12 @@ const SeverityAssessment: React.FC<Props> = ({ onNextStep }) => {
                 type="button"
                 onClick={() => routine_medication_array?.remove(index)}
               >
-                <img src={RemoveIcon} height="14px" width="14px" />
+                <img src={RemoveIcon} alt="remove" height="14px" width="14px" />
               </button>
             </div>
           ))}
           <button type="button" className="focus:outline-none" onClick={() => routine_medication_array?.append({})}>
-            <img src={AddIcon} height="14px" width="14px" />
+            <img src={AddIcon} alt="add" height="14px" width="14px" />
           </button>
 
           <p className="text-sm font-bold py-2">ยาที่แพ้</p>
@@ -359,12 +356,12 @@ const SeverityAssessment: React.FC<Props> = ({ onNextStep }) => {
                 type="button"
                 onClick={() => allergic_drugs_array?.remove(index)}
               >
-                <img src={RemoveIcon} height="14px" width="14px" />
+                <img alt="remove" src={RemoveIcon} height="14px" width="14px" />
               </button>
             </div>
           ))}
           <button type="button" className="focus:outline-none" onClick={() => allergic_drugs_array?.append({})}>
-            <img src={AddIcon} height="14px" width="14px" />
+            <img src={AddIcon} alt="add"  height="14px" width="14px" />
           </button>
 
           <button

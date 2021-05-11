@@ -10,7 +10,7 @@ import RegisterSuccess from './components/RegisterSuccess'
 import { useUserInfo } from '../../hooks/hospitel'
 import LoadingOverlay from '../../components/LoadingOverlay/LoadingOverlay'
 import { useLiff } from 'react-liff-v2'
-import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { lineUserState, LineUserProps, registerState } from '../../recoil/lineUser.atom'
 import Alert from '../../components/Alert/Alert'
 
@@ -60,10 +60,10 @@ const Page: React.FC<Props> = () => {
       })
     }
     
-  }, [liff, isLoggedIn])
+  }, [liff, isLoggedIn, setLineUser])
 
   // ################################################## MANAGE USER STEP + GLOBAL STATE ##################################################
-  const [{ loading, errorMsg, successMsg }, setRegisterState] = useRecoilState(registerState)
+  const [{ loading, errorMsg }, setRegisterState] = useRecoilState(registerState)
   const { data, error, mutate } = useUserInfo()
   
   const [step, setStep] = useState(-1) // currentStep
@@ -97,10 +97,11 @@ const Page: React.FC<Props> = () => {
     }
 
   }, [
-    data?.state?.is_apply,
     data?.state?.is_accept_ucep,
+    data?.state?.is_apply,
     data?.state?.is_submit_severity_assessment,
-    data?.state?.submit_identity_verification,
+    data?.state?.is_submit_health_insurance,
+    data?.state?.is_submit_identity_verification,
     data?.state?.is_accept_pdpa,
     error,
   ])
@@ -123,7 +124,7 @@ const Page: React.FC<Props> = () => {
         setRegisterState(s => ({...s, errorMsg: ''}))
       }, 4000)
     }
-  }, [errorMsg])
+  }, [errorMsg, setRegisterState])
 
   return (
     <LoadingOverlay active={loading || (!data && !error)}>

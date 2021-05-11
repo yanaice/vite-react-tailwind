@@ -7,8 +7,10 @@ import { InputField } from '../../../components/input/Input'
 import { FileField } from '../../../components/File/File'
 import { DatePickerField } from '../../../components/DateTimePicker/DateTimePicker'
 import { MENU } from '../RegisterHospitelPage'
-import { useUserInfo, useUserIdentify } from '../../../hooks/hospitel'
+import { useUserIdentify } from '../../../hooks/hospitel'
 import { validateCitizenID } from '../../../utils/validateForm'
+import hospitelAPI from '../../../api/hospitel'
+import useAxios from '../../../hooks/useAxios'
 import _ from 'lodash'
 import dayjs from 'dayjs'
 
@@ -57,7 +59,8 @@ export interface Props {
 
 const BasicInfo: React.FC<Props> = ({ onNextStep }) => {
   // ########################### FORM HANDLER ###########################
-  const { data, error, postUserIdentity } = useUserIdentify()
+  const { data } = useUserIdentify()
+  const { execute } = useAxios()
   const defaultValues = {}
   const methods = useForm<IForm>({
     resolver: yupResolver(schema),
@@ -72,7 +75,7 @@ const BasicInfo: React.FC<Props> = ({ onNextStep }) => {
   useEffect(() => {
     const formdata = prepareFormData(data)
     methods.reset(_.cloneDeep({ ...defaultValues, ...formdata }))
-  }, [data])
+  }, [data, methods])
 
   // ########################### FORMDATA ###########################
 
@@ -85,14 +88,14 @@ const BasicInfo: React.FC<Props> = ({ onNextStep }) => {
     _formdata.age = dayjs().diff(dayjs(_formdata.date_of_birth))
     _formdata.date_of_birth = dayjs(formdata.date_of_birth).format('YYYY-MM-DD')
     // await hospitelAPI.uploadFile(data)
-    _formdata.test_result_url = 'test_result_url'
-    _formdata.id_card_with_face_url = 'id_card_with_face_url'
+    _formdata.test_result_url = 'test_result_url' // await hospitelAPI.uploadFile()
+    _formdata.id_card_with_face_url = 'id_card_with_face_url' // await hospitelAPI.uploadFile()
     return _formdata
   }
   const onSubmit = handleSubmit(async (formdata) => {
     setLoading(true)
     const data = preSubmitData(formdata)
-    await postUserIdentity(data)
+    await execute({ func: hospitelAPI._postUserIdentity(data) })
     onNextStep()
   })
 

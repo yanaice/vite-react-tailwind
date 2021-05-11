@@ -1,5 +1,4 @@
 import React from 'react'
-import { StringDecoder } from 'string_decoder'
 import logo from '../../../assets/logo/praram9-logo.svg'
 import { useUserInfo } from '../../../hooks/hospitel'
 import insuranceList from '../insuranceList'

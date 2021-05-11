@@ -1,6 +1,6 @@
 import React from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
-import { Checkbox, CheckboxField } from '../Checkbox/Checkbox'
+import { useFormContext } from 'react-hook-form'
+import { CheckboxField } from '../Checkbox/Checkbox'
 import { DatePickerField } from '../DateTimePicker/DateTimePicker'
 import { InputField, InputFieldProps } from '../input/Input'
 
@@ -12,7 +12,7 @@ interface GroupFieldProps {
 }
 
 const GroupField: React.FC<GroupFieldProps> = ({ title, fields, className }) => {
-  const { watch, setValue } = useFormContext()
+  const { watch } = useFormContext()
 
 
   const watchFieldShow = watch(`${fields[0].name}_show`) // first field is main to check show 

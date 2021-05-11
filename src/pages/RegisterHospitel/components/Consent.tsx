@@ -2,17 +2,23 @@ import React from 'react'
 import logo from '../../../assets/logo/praram9-logo.svg'
 import { useConsent } from '../../../hooks/hospitel'
 import { useLiff } from 'react-liff-v2'
+import hospitelAPI from '../../../api/hospitel'
+import useAxios from '../../../hooks/useAxios'
 
 export interface Props {
 	onNextStep: () => void
 }
 
 const Consent: React.FC<Props> = ({ onNextStep }) => {
-  const { data, error, acceptTermAndCon } = useConsent()
-  const { liff, isLoggedIn } = useLiff()
+  const { data } = useConsent()
+  const { execute } = useAxios()
+  const { liff } = useLiff()
   
   const handleAccept = async () => {
-    await acceptTermAndCon(data.type, data.version)
+    if (!data) return
+    await execute({
+      func: hospitelAPI._acceptTermAndCon(data.type, data.version)
+    })
     onNextStep()
   }
   const handleNotAccept = async () => {

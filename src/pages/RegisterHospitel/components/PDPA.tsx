@@ -1,18 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
 import logo from '../../../assets/logo/praram9-logo.svg'
-import { useLiff } from 'react-liff-v2'
 import { usePDPA } from '../../../hooks/hospitel'
+import useAxios from '../../../hooks/useAxios'
+import hospitelAPI from '../../../api/hospitel'
 
 export interface Props {
   onNextStep: () => void
 }
 
 const InsuranceInfo: React.FC<Props> = ({ onNextStep }) => {
-  const { data, error, acceptTermAndCon } = usePDPA()
+  const { data } = usePDPA()
+  const { execute } = useAxios()
 
   const handleAccept = async () => {
-    await acceptTermAndCon(data.type, data.version)
+    if (!data) return
+    await execute({
+      func: hospitelAPI._acceptTermAndCon(data.type, data.version)
+    })
     onNextStep()
   }
 
@@ -118,7 +122,9 @@ const InsuranceInfo: React.FC<Props> = ({ onNextStep }) => {
           และยินยอมโดยสมัครใจในการปฏิบัติตามกฎและข้อกำหนดของโรงพยาบาลทุกประการ
         </p>
         
-        <button type="button" className={`w-full mt-4 self-end btn-primary btn`} onClick={handleAccept}>
+        <button
+          type="button" 
+          className={`w-full mt-4 self-end btn-primary btn`} onClick={handleAccept}>
           รับทราบ
         </button>
       </div>

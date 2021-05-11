@@ -36,31 +36,12 @@ export const usePDPA = () => {
 }
 
 export const useConsent = () => {
-  const [registerStaus, setRegisterState] = useRecoilState(registerState)
-  const lineUser = useRecoilValue(lineUserState)
-  const { data, error, mutate } = useSWR(lineUser && hospitelAPI.getConsent(lineUser.userId))
+  const { data, error, mutate } = useSWR(hospitelAPI.getConsent())
 
-  const acceptTermAndCon = async (type: string, version: string) => {
-    try {
-      if (!lineUser) return
-      setRegisterState(s => ({ ...s, loading: true }))
-      await hospitelAPI.acceptTermAndCon(lineUser.userId, type, version)
-      setRegisterState(s => ({ ...s, loading: false }))
-    } catch (error) {
-      setRegisterState(s => ({
-        ...s,
-        loading: false,
-        errorMsg: "เกิดข้อผิดพลาด"
-      }))
-      console.error(error)
-    }
-  }
-  
   return {
     data,
     error,
     mutate,
-    acceptTermAndCon,
   }
 }
 
@@ -94,31 +75,13 @@ export const useUserInfo = () => {
 }
 
 export const useUserIdentify = () => {
-  const [registerStaus, setRegisterState] = useRecoilState(registerState)
   const lineUser = useRecoilValue(lineUserState)
   const { data, error, mutate } = useSWR(lineUser && hospitelAPI.getUserIdentity(lineUser.userId))
-
-  const postUserIdentity = async (data: any) => {
-    try {
-      if (!lineUser) return
-      setRegisterState(s => ({ ...s, loading: true }))
-      await hospitelAPI.postUserIdentity(lineUser.userId, data)
-      setRegisterState(s => ({ ...s, loading: false }))
-    } catch (error) {
-      setRegisterState(s => ({
-        ...s,
-        loading: false,
-        errorMsg: "เกิดข้อผิดพลาด"
-      }))
-      console.error(error)
-    }
-  }
 
   return {
     data,
     error,
     mutate,
-    postUserIdentity,
   }
 }
 

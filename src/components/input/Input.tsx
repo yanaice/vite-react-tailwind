@@ -2,7 +2,6 @@ import React from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import _ from 'lodash'
 import NumberFormat from 'react-number-format'
-import { numberOnly } from '../../utils/regex'
 
 export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 	// type: string | undefined
@@ -64,7 +63,7 @@ export const Input: React.FC<InputProps> = //({ format, ...props}) => {
 }
 
 export const InputField: React.FC<InputFieldProps> = props => {
-	const { register, control, formState: { errors }  } = useFormContext()
+	const { control, formState: { errors }  } = useFormContext()
 	
 	const { name, label, required } = props
 	// field: { name, onChange, onBlur, value, ref }
