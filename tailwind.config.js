@@ -1,44 +1,48 @@
-const colors = require('tailwindcss/colors')
-
 module.exports = {
-  purge: [],
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+    fontSize: {
+      xs: ["1rem", { lineHeight: "1.2" }],
+      sm: ["1.125rem", { lineHeight: "1.2" }],
+      base: ["1.25rem"],
+      lg: ["1.75rem", { lineHeight: "1.2" }],
+      // 'xl': '1.25rem',
+      '2xl': '1.5rem',
+      // '3xl': '1.875rem',
+      // '4xl': '2.25rem',
+      // '5xl': '3rem',
+      // '6xl': '4rem',
+      // '7xl': '5rem',
     },
-    colors: {
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
-      red: colors.rose,
-      pink: colors.fuchsia,
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+    // colors: { // override tailwin default color
+    //   indigo: '#454648',
+    //   blue: '#008387',
+    //   red: '#de3618',
+    // },
+    minWidth: {
+      0: "0",
+      "1/4": "25%",
+      "1/2": "50%",
+      "3/4": "75%",
+      full: "100%",
     },
     extend: {
       colors: {
         primary: {
-          '200': colors.lime[600],
-          '500': colors.lime[800],
-          '700': colors.lime[900],
-        }
+          200: "#79BFAF",
+          500: "#008387",
+          700: "#004848",
+        },
+        secondary: "#454648",
       },
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
+      flex: {
+        2: "2 2 0%",
       },
-      borderRadius: {
-        '4xl': '2rem',
-      }
-    }
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

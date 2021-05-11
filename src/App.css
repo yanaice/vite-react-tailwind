@@ -1,41 +1,44 @@
-.App {
-  text-align: center;
-}
+@layer components {
+  .btn {
+    @apply py-1 px-2 rounded focus:outline-none text-base;
+  }
+  .btn.btn-primary {
+    @apply bg-primary-500 text-white border border-primary-500 font-bold hover:bg-primary-700;
+  }
+  .btn.btn-secondary {
+    @apply text-primary-500 font-bold border border-primary-500 hover:opacity-10;
+  }
+  
+  .btn.btn-upload{
+    @apply py-0 px-1 bg-primary-500 text-white hover:bg-primary-700 text-xs;
+  }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  .btn.btn-tab {
+    @apply py-1 px-1 text-xs text-gray-500 bg-white hover:bg-gray-200;;
+  }
+  .btn.btn-tab.active {
+    @apply bg-primary-500 text-white font-bold hover:bg-primary-700;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .btn:disabled {
+    @apply border border-gray-200 text-gray-300 bg-gray-200 cursor-not-allowed;
+  }
+  .btn.btn-upload.disabled {
+    @apply text-gray-300 bg-gray-200 cursor-not-allowed;
   }
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.scroll-content {
+  flex: 1;
+  overflow-y: auto;
+}
+ul.a {
+  list-style-type: circle;
 }
 
-.App-link {
-  color: #61dafb;
+ol, ul {
+  list-style: circle;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+.MuiButtonBase-root:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }

@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'DB Ozone X';
+    src: url('DBOzoneX.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X';
+    src: url('DBOzoneX-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X UltraLi';
+    src: url('DBOzoneX-UltraLi.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X UltraLiIt';
+    src: url('DBOzoneX-UltraLiIt.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X MediumIt';
+    src: url('DBOzoneX-MediumIt.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X';
+    src: url('DBOzoneX-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X LightIt';
+    src: url('DBOzoneX-LightIt.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X';
+    src: url('DBOzoneX-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X';
+    src: url('DBOzoneX-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'DB Ozone X BoldIt';
+    src: url('DBOzoneX-BoldIt.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
